@@ -1,4 +1,4 @@
-# Symbolic Puzzle MLOps Infrastructure
+# MLOps Infrastructure & CI/CD
 
 Complete MLOps infrastructure for automated machine learning workflows, including CI/CD pipelines, monitoring, and infrastructure as code.
 
@@ -77,7 +77,7 @@ This project provides production-ready MLOps infrastructure for managing machine
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd symbolic-puzzle-mlops-infrastructure
+cd mlops-infrastructure
 
 # Initialize Terraform
 cd infrastructure/terraform
@@ -258,4 +258,3 @@ terraform validate
 ## License
 
 MIT License
-
