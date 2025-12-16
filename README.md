@@ -18,10 +18,13 @@ This project provides production-ready MLOps infrastructure for managing machine
 - **Infrastructure as Code**
   - Terraform configurations for cloud resources
   - Kubernetes manifests for orchestration
+  - Helm charts for deployment
   - Auto-scaling configurations
   - Resource management and cost optimization
 
 - **Monitoring & Observability**
+  - Prometheus metrics collection
+  - Grafana dashboards
   - Model performance monitoring
   - Data drift detection
   - API latency and error tracking
@@ -29,41 +32,19 @@ This project provides production-ready MLOps infrastructure for managing machine
   - Alerting system (Slack/email notifications)
   - Comprehensive logging and tracing
 
+- **Security**
+  - Network security (VPC, security groups, network policies)
+  - RBAC (Kubernetes and AWS IAM)
+  - Secrets management
+  - Access control
+
 - **Data Pipeline Integration**
   - ETL pipeline for training data
   - Data validation and quality checks
   - Automated retraining triggers
   - Data versioning
 
-## Project Structure
-
-```
-.
-├── ci-cd/
-│   ├── .github/
-│   │   └── workflows/      # GitHub Actions workflows
-│   ├── jenkins/            # Jenkins pipeline configs
-│   └── scripts/            # Deployment scripts
-├── infrastructure/
-│   ├── terraform/          # Infrastructure as Code
-│   ├── kubernetes/         # K8s manifests
-│   └── docker-compose/     # Local development
-├── monitoring/
-│   ├── prometheus/         # Metrics collection
-│   ├── grafana/            # Dashboards
-│   └── alerts/             # Alerting rules
-├── data-pipeline/
-│   ├── etl/                # ETL scripts
-│   ├── validation/         # Data validation
-│   └── triggers/           # Retraining triggers
-├── docs/
-│   ├── architecture.md
-│   ├── deployment.md
-│   └── monitoring.md
-└── README.md
-```
-
-## Getting Started
+## Quick Start
 
 ### Prerequisites
 
@@ -90,27 +71,14 @@ docker-compose up -d
 
 ## CI/CD Pipeline
 
-### GitHub Actions Workflow
-
 The CI/CD pipeline automatically:
 1. Runs tests on code changes
 2. Validates model performance
-3. Builds Docker images
-4. Deploys to staging
-5. Runs integration tests
-6. Promotes to production on approval
-
-### Pipeline Stages
-
-```yaml
-# Example workflow structure
-- Test: Unit and integration tests
-- Build: Docker image creation
-- Validate: Model performance validation
-- Deploy Staging: Automated staging deployment
-- Integration Tests: End-to-end testing
-- Deploy Production: Manual approval required
-```
+3. Validates data quality
+4. Builds Docker images
+5. Deploys to staging
+6. Runs integration tests
+7. Promotes to production on approval
 
 ### Running Locally
 
@@ -144,6 +112,9 @@ terraform destroy
 # Apply Kubernetes manifests
 kubectl apply -f infrastructure/kubernetes/
 
+# Deploy with Helm
+helm install ml-platform ./infrastructure/kubernetes/helm/ml-platform
+
 # Check deployment status
 kubectl get deployments
 kubectl get services
@@ -168,6 +139,7 @@ Pre-configured dashboards for:
 - Resource usage
 - Data drift detection
 - Error rates and alerts
+- Cost tracking
 
 ### Accessing Dashboards
 
@@ -180,43 +152,26 @@ open http://localhost:3000
 # Default credentials: admin/admin
 ```
 
-## Data Pipeline
+## Project Structure
 
-### ETL Process
-
-```bash
-# Run ETL pipeline
-python data-pipeline/etl/run_pipeline.py
-
-# Validate data quality
-python data-pipeline/validation/validate.py --data-path data/raw/
+```
+mlops-infrastructure/
+├── ci-cd/            # CI/CD pipeline configurations
+├── infrastructure/   # Terraform and Kubernetes configs
+├── monitoring/       # Prometheus and Grafana setup
+├── security/         # Security configurations
+├── data-pipeline/   # ETL and validation pipelines
+├── tests/           # Infrastructure tests
+└── docs/            # Documentation (including learning guide)
 ```
 
-### Automated Retraining
+## Documentation
 
-The system automatically triggers retraining when:
-- New training data is available
-- Model performance degrades
-- Data drift is detected
-- Scheduled retraining interval is reached
-
-## Alerting
-
-### Alert Configuration
-
-Alerts are configured for:
-- Model performance degradation
-- High error rates
-- Resource exhaustion
-- Data quality issues
-- Deployment failures
-
-### Notification Channels
-
-- Slack webhooks
-- Email notifications
-- PagerDuty integration
-- Custom webhook endpoints
+- **[Learning Guide](docs/learn.md)** - Complete step-by-step learning path
+- [Kubernetes Guide](docs/kubernetes_guide.md)
+- [CI/CD Guide](docs/cicd_guide.md)
+- [Monitoring Guide](docs/monitoring_guide.md)
+- [Security Guide](docs/security_guide.md)
 
 ## Testing
 
@@ -230,30 +185,6 @@ pytest tests/infrastructure/
 # Validate Terraform
 terraform validate
 ```
-
-## Documentation
-
-- [Architecture Overview](docs/architecture.md)
-- [Deployment Guide](docs/deployment.md)
-- [Monitoring Setup](docs/monitoring.md)
-- [CI/CD Configuration](docs/cicd.md)
-- [Infrastructure Guide](docs/infrastructure.md)
-
-## Security
-
-- Secrets management (HashiCorp Vault, AWS Secrets Manager)
-- Network security policies
-- Access control and RBAC
-- Audit logging
-- Compliance configurations
-
-## Cost Optimization
-
-- Auto-scaling based on demand
-- Resource right-sizing
-- Spot instance usage
-- Cost monitoring and alerts
-- Reserved instance recommendations
 
 ## License
 
