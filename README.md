@@ -19,18 +19,28 @@ This project provides production-ready MLOps infrastructure for managing machine
   - Terraform configurations for cloud resources
   - Kubernetes manifests for orchestration
   - Helm charts for deployment
+  - Kustomize for GitOps workflows
   - Auto-scaling configurations
-  - Resource management and cost optimization
+  - Resource management and optimization
+  - *Note: Detailed cost analysis and optimization strategies are covered in Project 3 (Production ML Platform)*
+
+- **Workflow Orchestration**
+  - Apache AirFlow DAGs for ML pipelines
+  - Automated training workflows
+  - Data validation and model deployment pipelines
+  - Task dependencies and error handling
+  - Scheduled and event-driven workflows
 
 - **Monitoring & Observability**
   - Prometheus metrics collection
   - Grafana dashboards
   - Model performance monitoring
-  - Data drift detection
+  - Data drift metrics visualization (Grafana dashboards)
   - API latency and error tracking
   - Resource usage monitoring
   - Alerting system (Slack/email notifications)
   - Comprehensive logging and tracing
+  - *Note: Comprehensive data drift detection with statistical tests is covered in Project 3 (Production ML Platform)*
 
 - **Security**
   - Network security (VPC, security groups, network policies)
@@ -137,9 +147,10 @@ Pre-configured dashboards for:
 - Model performance overview
 - API health and latency
 - Resource usage
-- Data drift detection
+- Data drift metrics visualization
 - Error rates and alerts
-- Cost tracking
+- Basic cost tracking
+- *Note: Comprehensive drift detection and detailed cost optimization are covered in Project 3 (Production ML Platform)*
 
 ### Accessing Dashboards
 
@@ -169,7 +180,9 @@ mlops-infrastructure/
 
 - **[Learning Guide](docs/learn.md)** - Complete step-by-step learning path
 - [Kubernetes Guide](docs/kubernetes_guide.md)
+- [Helm & Kustomize Guide](docs/helm_kustomize_guide.md)
 - [CI/CD Guide](docs/cicd_guide.md)
+- [AirFlow Guide](docs/airflow_guide.md)
 - [Monitoring Guide](docs/monitoring_guide.md)
 - [Security Guide](docs/security_guide.md)
 
